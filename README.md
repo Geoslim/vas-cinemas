@@ -15,4 +15,7 @@ movies) as its own Laravel module (Optional but recommended).
 
 
 Run
+
+composer install
+
 php artisan migrate:fresh --seed
