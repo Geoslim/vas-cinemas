@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 use Modules\Cinema\Entities\Cinema;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $cinemas = Cinema::all();
-        view()->share('cinemas', $cinemas);
+        // View::composer('*', 'App\Http\View\Composers\CinemasComposer');
+        View::composer('*', function ($view){
+            $view->with('cinemas', Cinema::all());
+        });
     }
 }

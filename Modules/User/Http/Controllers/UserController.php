@@ -16,6 +16,7 @@ class UserController extends Controller
 
     public function __construct(UserRepository $userRepository)
     {
+        $this->middleware('auth')->except(['index', 'create', 'store', 'login']);
         $this->userRepository = $userRepository;
     }
 
@@ -77,6 +78,6 @@ class UserController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect()->route('login.index');
+        return redirect()->route('login');
     }
 }

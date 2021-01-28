@@ -15,6 +15,8 @@ class CinemaController extends Controller
 
     public function __construct(CinemaRepository $cinemaRepository)
     {
+        $this->middleware('auth')->except(['index', 'show']);
+
         $this->cinemaRepository = $cinemaRepository;
     }
 

@@ -15,6 +15,8 @@ class MovieController extends Controller
 
     public function __construct(MovieRepository $movieRepository)
     {
+        $this->middleware('auth');
+        
         $this->movieRepository = $movieRepository;
     }
 
@@ -34,6 +36,7 @@ class MovieController extends Controller
      */
     public function create()
     {
+        
         $showtimes = $this->movieRepository->getShowTime();
         return view('movie::create')->with('showtimes', $showtimes);
     }

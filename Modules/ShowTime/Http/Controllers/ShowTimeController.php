@@ -15,6 +15,8 @@ class ShowTimeController extends Controller
 
     public function __construct(ShowTimeRepository $showtimeRepository)
     {
+        $this->middleware('auth');
+
         $this->showtimeRepository = $showtimeRepository;
     }
 
